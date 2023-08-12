@@ -20,12 +20,15 @@ export async function addMember(member: RecruitmentMember) {
       q2,
       q3,
       q4
+      ${member.subFirstPreference ? ', subfirstpreference' : ''}
+      ${member.subSecondPreference ? ', subsecondpreference' : ''}
+
     )
     VALUES (
       '${member.department}',
       '${member.name}',
       '${member.mobile}',
-        '${member.email}',
+      '${member.email}',
       '${member.areaOfResidency}',
       '${member.university}',
       '${member.faculty}',
@@ -38,9 +41,12 @@ export async function addMember(member: RecruitmentMember) {
       '${member.q2}',
       '${member.q3}',
       '${member.q4}'
+      ${member.subFirstPreference ? `, '${member.subFirstPreference}'` : ''}
+      ${member.subSecondPreference ? `, '${member.subSecondPreference}'` : ''}
     );
   `;
 
+  console.log(insertQuery);
     try {
         return await dbClient.query(insertQuery);
     } catch (error) {

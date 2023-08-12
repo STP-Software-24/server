@@ -8,6 +8,8 @@ export type RecruitmentMember = {
     faculty: string;
     graduationYear: string;
     firstPreference: string;
+    subFirstPreference?: string;
+    subSecondPreference?: string;
     secondPreference: string;
     reasonForApplying: string;
     previousExperience: string;
