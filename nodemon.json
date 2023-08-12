@@ -1,5 +1,6 @@
 {
     "events":{
         "crash":"nodemon src/server.ts"
+
     }
 }
