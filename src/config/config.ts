@@ -11,5 +11,6 @@ import { prod } from './prod';
 //     default:
 // }
 
-export const config = prod
+const config = prod
 
+export default config;

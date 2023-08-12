@@ -1,7 +1,7 @@
 import http from 'http';
 import api from './api';
 import { dbConnect } from './services/database';
-import { config } from './config/config';
+import config from './config/config';
 
 const server = http.createServer(api);
 
