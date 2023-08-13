@@ -16,10 +16,12 @@ export async function dbAddMember(member: RecruitmentMember) {
       secondpreference,
       reasonforapplying,
       previousexperience,
-      q1,
-      q2,
-      q3,
-      q4
+      ${member.q1 ? ', q1' : ''}
+      ${member.q2 ? ', q2' : ''}
+      ${member.q3 ? ', q3' : ''}
+      ${member.q4 ? ', q4' : ''}
+      ${member.q5 ? ', q5' : ''}
+      ${member.q6 ? ', q6' : ''}
       ${member.subFirstPreference ? ', subfirstpreference' : ''}
       ${member.subSecondPreference ? ', subsecondpreference' : ''}
 
@@ -37,10 +39,12 @@ export async function dbAddMember(member: RecruitmentMember) {
       '${member.secondPreference}',
       '${member.reasonForApplying}',
       '${member.previousExperience}',
-      '${member.q1}',
-      '${member.q2}',
-      '${member.q3}',
-      '${member.q4}'
+      ${member.q1 ? `, '${member.q1}'` : ''}
+      ${member.q2 ? `, '${member.q2}'` : ''}
+      ${member.q3 ? `, '${member.q3}'` : ''}
+      ${member.q4 ? `, '${member.q4}'` : ''}
+      ${member.q5 ? `, '${member.q5}'` : ''}
+      ${member.q6 ? `, '${member.q6}'` : ''}
       ${member.subFirstPreference ? `, '${member.subFirstPreference}'` : ''}
       ${member.subSecondPreference ? `, '${member.subSecondPreference}'` : ''}
     );
