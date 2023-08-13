@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import { addMember } from '../model/members.recruitment.model';
-import { registerMemberApplication } from '../controller/member.recruitment.controller';
+import { getAllMembersApplication, registerMemberApplication } from '../controller/member.recruitment.controller';
 
 const memberRecruitmentRouter = Router();
 
 memberRecruitmentRouter
-.post('/', registerMemberApplication);
+.post('/', registerMemberApplication)
+.get('/', getAllMembersApplication);
 
 export default memberRecruitmentRouter;

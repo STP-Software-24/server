@@ -1,7 +1,7 @@
 import { dbClient } from '../services/database';
 import { RecruitmentMember } from '../types/members.recruitment';
 
-export async function addMember(member: RecruitmentMember) {
+export async function dbAddMember(member: RecruitmentMember) {
     const insertQuery = `
     INSERT INTO members_recruitment (
       department,
@@ -49,6 +49,18 @@ export async function addMember(member: RecruitmentMember) {
   console.log(insertQuery);
     try {
         return await dbClient.query(insertQuery);
+    } catch (error) {
+        throw new Error((error as Error).message);
+    }
+}
+
+export async function dbGetAllMembersApplication() {
+    const selectQuery = `
+    SELECT * FROM members_recruitment;
+  `;
+
+    try {
+        return await dbClient.query(selectQuery);
     } catch (error) {
         throw new Error((error as Error).message);
     }
