@@ -15,7 +15,7 @@ export async function dbAddMember(member: RecruitmentMember) {
       firstpreference,
       secondpreference,
       reasonforapplying,
-      previousexperience,
+      previousexperience
       ${member.q1 ? ', q1' : ''}
       ${member.q2 ? ', q2' : ''}
       ${member.q3 ? ', q3' : ''}
@@ -38,7 +38,7 @@ export async function dbAddMember(member: RecruitmentMember) {
       '${member.firstPreference}',
       '${member.secondPreference}',
       '${member.reasonForApplying}',
-      '${member.previousExperience}',
+      '${member.previousExperience}'
       ${member.q1 ? `, '${member.q1}'` : ''}
       ${member.q2 ? `, '${member.q2}'` : ''}
       ${member.q3 ? `, '${member.q3}'` : ''}
