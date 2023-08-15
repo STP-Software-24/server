@@ -53,9 +53,9 @@ export async function dbAddMember(member: RecruitmentMember) {
         member.subSecondPreference,
     ];
 
-    console.log(insertQuery, values);
     try {
-        return await dbClient.query(insertQuery, values);
+      console.log(insertQuery, values);
+      return await dbClient.query(insertQuery, values);
     } catch (error) {
         throw new Error((error as Error).message);
     }

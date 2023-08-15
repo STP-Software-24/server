@@ -6,7 +6,7 @@ import { dbAddMember, dbGetAllMembersApplication } from '../model/members.recrui
 export async function registerMemberApplication(req: Request, res: Response) {
     const member = req.body;
     try {
-        const addedMember = dbAddMember(member);
+        const addedMember = await dbAddMember(member);
         res.json({ status: 'success', data: addedMember });
     } catch (error) {
         res.json({
