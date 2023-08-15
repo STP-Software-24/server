@@ -54,9 +54,10 @@ export async function dbAddMember(member: RecruitmentMember) {
     ];
 
     try {
-      console.log(insertQuery, values);
-      return await dbClient.query(insertQuery, values);
+        console.log(insertQuery, values);
+        return await dbClient.query(insertQuery, values);
     } catch (error) {
+        console.error((error as Error).message);
         throw new Error((error as Error).message);
     }
 }
