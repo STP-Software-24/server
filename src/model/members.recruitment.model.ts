@@ -1,3 +1,4 @@
+import { QueryResult } from 'pg';
 import { dbClient } from '../services/database';
 import { RecruitmentMember } from '../types/members.recruitment';
 
@@ -91,7 +92,7 @@ export async function dbGetAllMembersApplication() {
   `;
 
     try {
-        return await dbClient.query(selectQuery);
+        return await dbClient.query(selectQuery) as QueryResult<RecruitmentMember>;
     } catch (error) {
         throw new Error((error as Error).message);
     }

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import memberRecruitmentRouter from './member.recruitment.router';
 import { dbClient } from '../services/database';
+import emailRouter from './email.router';
 
 const router = Router();
 
@@ -13,5 +14,6 @@ router.get('/health-check',async (req, res) => {
     }
 });
 router.use('/member-recruitment', memberRecruitmentRouter);
+router.use('/email', emailRouter);
 
 export default router;
