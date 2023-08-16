@@ -10,9 +10,9 @@ export async function registerMemberApplication(req: Request, res: Response) {
     try {
         const addedMember = await dbAddMember(member);
         await sendRegisterationEmail(member.email)
-        res.json({ status: 'success', data: addedMember });
+        res.status(200).json({ status: 'success', data: addedMember });
     } catch (error) {
-        res.json({
+        res.status(409).json({
             status: 'failure',
             data: (error as Error).message,
         });
@@ -25,7 +25,7 @@ export async function getAllMembersApplication(req: Request, res: Response) {
         // TODO: ADD DTO
         res.json(members.rows);
     } catch (error) {
-        res.json({
+        res.status(500).json({
             status: 'failure',
             data: (error as Error).message,
         });
