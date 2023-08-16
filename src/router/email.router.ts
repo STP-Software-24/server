@@ -3,6 +3,6 @@ import { sendCustomEmailToAll } from '../controller/email.controller';
 
 const emailRouter = Router();
 
-emailRouter.post('/custom/all', sendCustomEmailToAll);
+// emailRouter.post('/custom/all', sendCustomEmailToAll);
 
 export default emailRouter;
