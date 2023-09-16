@@ -1,4 +1,6 @@
-export const dev = {
+import { configObj } from '../types/config';
+
+export const dev: configObj = {
     PORT: process.env.PORT,
     USER: process.env.DEV_USERNAME,
     HOST: process.env.DEV_HOST,

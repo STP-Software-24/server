@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { prod } from './prod';
 import { dev } from './dev';
-import { configObj } from './configType';
+import { configObj } from '../types/config';
 
 let config: configObj;
 

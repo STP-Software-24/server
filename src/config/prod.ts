@@ -1,4 +1,5 @@
-import { configObj } from './configType';
+
+import { configObj } from '../types/config';
 
 export const prod: configObj = {
     PORT: process.env.PORT,
