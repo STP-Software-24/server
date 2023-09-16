@@ -9,7 +9,7 @@ let portNum: number = config.PORT !== undefined ? parseInt(config.PORT) : 5432;
 
 (async () => {
     await dbConnect();
-    server.listen(config.PORT, () => {
-        console.log(`Server is listening on port ${config.PORT}`);
+    server.listen(portNum, () => {
+        console.log(`Server is listening on port ${portNum}`);
     });
 })();
