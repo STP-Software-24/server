@@ -2,7 +2,7 @@ import { QueryResult } from 'pg';
 import { dbClient } from '../services/database';
 import { OrganizationUser } from '../types/user.registration';
 
-export async function dbAddMember(user: OrganizationUser) {
+export async function dbAddUser(user: OrganizationUser) {
     const insertQuery = `
   INSERT INTO users (
     name,
