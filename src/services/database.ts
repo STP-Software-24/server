@@ -1,23 +1,16 @@
 import { Client } from 'pg';
-import  config  from '../config/config';
+import config from '../config/config';
 
-import * as pgPromise from 'pg-promise';
-const pgp= pgPromise();
-
-
-
-
-const connectionString =
-    'postgres://ofahmy1234:HcSZV9ulh4tL@ep-sparkling-scene-15350032.us-east-2.aws.neon.tech/neondb?sslmode=require';
-
-export function getDbConnectionString() {
-    while (!config.DB_CONNECTION_STRING) {}
-    return config.DB_CONNECTION_STRING;
-}
+let portNum: number = config.PORT !== undefined ? parseInt(config.PORT) : 5432;
 
 export const dbClient = new Client({
-    connectionString: config.DB_CONNECTION_STRING,
+    host: config.HOST,
+    user: config.USER,
+    port: portNum,
+    password: config.PASSWORD,
+    database: config.DATABASE,
 });
+
 export async function dbConnect() {
     await dbClient.connect();
     console.log('Connected to database');

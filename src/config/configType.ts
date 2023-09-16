@@ -1,7 +1,7 @@
 export type configObj = {
-    PORT: String | undefined;
-    USER: String | undefined;
-    HOST: String | undefined;
-    DATABASE: String | undefined;
-    PASSWORD: String | undefined;
+    PORT: string | undefined;
+    USER: string | undefined;
+    HOST: string | undefined;
+    DATABASE: string | undefined;
+    PASSWORD: string | undefined;
 };
