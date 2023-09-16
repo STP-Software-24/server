@@ -1,6 +1,6 @@
 import { QueryResult } from 'pg';
 import { dbClient } from '../services/database';
-import { OrganizationUser } from '../types/user.registration';
+import { OrganizationUser } from '../types/member.registration';
 
 export async function dbAddUser(user: OrganizationUser) {
     const insertQuery = `
@@ -59,10 +59,19 @@ export async function dbEmailExists(email: string) {
     const selectQuery = `
     SELECT count(*) FROM users WHERE email = $1
   `;
-
-    let values = [email];
     try {
-        return await dbClient.query(selectQuery, values);
+        return await dbClient.query(selectQuery, [email]);
+    } catch (error) {
+        throw new Error((error as Error).message);
+    }
+}
+
+export async function dbPhoneExists(phoneNumber: string) {
+    const selectQuery = `
+    SELECT count(*) FROM users WHERE phone_number = $1
+  `;
+    try {
+        return await dbClient.query(selectQuery, [phoneNumber]);
     } catch (error) {
         throw new Error((error as Error).message);
     }
