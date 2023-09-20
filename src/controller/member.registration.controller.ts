@@ -39,6 +39,23 @@ export const createUserValidator = [
         .withMessage('Write Area of Residence Correctly'),
 ];
 
+export const checkEmailValidator = [
+    body('email')
+        .not()
+        .isEmpty()
+        .withMessage("Email Can't be empty")
+        .isEmail()
+        .withMessage('Send Your Email Correctly'),
+];
+
+export const checkPhoneValidator = [
+    body('phone_number')
+        .not()
+        .isEmpty()
+        .withMessage('Phone Number Cannot be empty')
+        .matches(/^(010|011|012|015)\d{8}$/)
+        .withMessage('Write your Phone Number Correctly'),
+];
 
 //This Controller is responsible for Adding new Users from the application
 //firstly we need to get the user data from the req
