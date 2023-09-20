@@ -7,6 +7,7 @@ import {
 } from '../model/member.registration.model';
 import { OrganizationUser } from '../types/member.registration';
 import { body } from 'express-validator';
+import { sendEmail } from '../services/mailer';
 
 export const createUserValidator = [
     body('name')
@@ -47,6 +48,7 @@ export async function registerUserApplication(req: Request, res: Response) {
     const user = req.body as OrganizationUser;
     try {
         const addUser = await dbAddUser(user);
+        await sendEmail(user.email,'STP`24 Orientation','Thanks For Applying!! Here is the whatsapp group https://chat.whatsapp.com/IQew0pdD3LK51NKWsMdgKX')
         res.status(200).json({ status: 'success', data: addUser });
     } catch (error) {
         res.status(409).json({

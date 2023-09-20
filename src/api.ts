@@ -24,9 +24,7 @@ api.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 //Applying Cors
 api.use(cors());
 api.use(express.json());
-//api.use('/', router);
+api.use('/', router);
 
-api.get('/', (req, res) => {
-    res.send('Hello from server');
-});
+
 export default api;
