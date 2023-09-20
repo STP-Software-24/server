@@ -13,8 +13,8 @@ const memberRegistrationRouter = Router();
 memberRegistrationRouter
     .post(
         '/add-user',
-        //createUserValidator,
-        //validateRequestSchema,
+        createUserValidator,
+        validateRequestSchema,
         registerUserApplication,
     )
     .get('/check-email', checkEmailExists)
