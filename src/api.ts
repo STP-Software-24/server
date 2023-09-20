@@ -3,7 +3,6 @@ import router from './router/router';
 import cors from 'cors';
 import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
-import bodyParser from 'body-parser';
 import { checkEmailExists } from './controller/member.registration.controller';
 const api = express();
 /*
@@ -26,10 +25,8 @@ api.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 api.use(cors());
 api.use(express.json());
 //api.use('/', router);
-async function tst() {
-    console.log('test');
-}
 
-api.use('/', tst);
-
+api.get('/', (req, res) => {
+    res.send('Hello from server');
+});
 export default api;
