@@ -6,7 +6,40 @@ import {
     dbPhoneExists,
 } from '../model/member.registration.model';
 import { OrganizationUser } from '../types/member.registration';
+import { body, validationResult } from 'express-validator';
 
+export const createUserValidator = [
+    body('name')
+        .not()
+        .isEmpty()
+        .withMessage("Name Can't be empty")
+        .isString()
+        .isAlpha()
+        .withMessage('Name Can Contains letters Only'),
+
+    body('email')
+        .not()
+        .isEmpty()
+        .withMessage("Email Can't be empty")
+        .isEmail()
+        .withMessage('Write Your Email Correctly'),
+
+    body('phone_number')
+        .not()
+        .isEmpty()
+        .withMessage('Phone Number Cannot be empty')
+        .matches(/^(010|011|012|015)\d{8}$/)
+        .withMessage('Write your Phone Number Correctly'),
+
+    body('area_of_residence')
+        .not()
+        .isEmpty()
+        .withMessage("Name Can't be empty")
+        .isString()
+        .withMessage('Write Area of Residence Correctly'),
+];
+//This Controller is responsible for Adding new Users from the application
+//firstly we need to get the user data from the req
 export async function registerUserApplication(req: Request, res: Response) {
     const user = req.body as OrganizationUser;
     try {
