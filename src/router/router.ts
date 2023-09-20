@@ -14,6 +14,8 @@ router.get('/health-check', async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 });
+
+
 router.use('/member-recruitment', memberRecruitmentRouter);
 router.use('/member-registration', memberRegistrationRouter);
 router.use('/email', emailRouter);

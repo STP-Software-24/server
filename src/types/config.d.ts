@@ -1,5 +1,5 @@
 export type configObj = {
-    PORT: string | undefined;
+    PORT: number | undefined;
     USER: string | undefined;
     HOST: string | undefined;
     DATABASE: string | undefined;

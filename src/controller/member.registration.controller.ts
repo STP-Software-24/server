@@ -6,7 +6,7 @@ import {
     dbPhoneExists,
 } from '../model/member.registration.model';
 import { OrganizationUser } from '../types/member.registration';
-import { body, validationResult } from 'express-validator';
+import { body } from 'express-validator';
 
 export const createUserValidator = [
     body('name')
@@ -38,9 +38,12 @@ export const createUserValidator = [
         .isString()
         .withMessage('Write Area of Residence Correctly'),
 ];
+
+
 //This Controller is responsible for Adding new Users from the application
 //firstly we need to get the user data from the req
 export async function registerUserApplication(req: Request, res: Response) {
+    console.log('hello');
     const user = req.body as OrganizationUser;
     try {
         const addUser = await dbAddUser(user);

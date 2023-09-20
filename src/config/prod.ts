@@ -2,7 +2,7 @@
 import { configObj } from '../types/config';
 
 export const prod: configObj = {
-    PORT: process.env.PORT,
+    PORT: 5432,
     USER: process.env.PROD_USERNAME,
     HOST: process.env.PROD_HOST,
     DATABASE: process.env.PROD_DB,

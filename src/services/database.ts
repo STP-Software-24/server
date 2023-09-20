@@ -1,12 +1,10 @@
 import { Client } from 'pg';
 import config from '../config/config';
 
-let portNum: number = config.PORT !== undefined ? parseInt(config.PORT) : 5432;
-
 export const dbClient = new Client({
     host: config.HOST,
     user: config.USER,
-    port: portNum,
+    port: 5432,
     password: config.PASSWORD,
     database: config.DATABASE,
 });

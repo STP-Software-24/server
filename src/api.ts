@@ -4,9 +4,9 @@ import cors from 'cors';
 import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 import bodyParser from 'body-parser';
-
+import { checkEmailExists } from './controller/member.registration.controller';
 const api = express();
-
+/*
 // Adding Swagger Api-Documentation Options
 const options = {
     definition: {
@@ -21,10 +21,15 @@ const options = {
 };
 const swaggerSpecs = swaggerJsDoc(options);
 api.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
-
+*/
 //Applying Cors
 api.use(cors());
-api.use(bodyParser.json());
-api.use('/', router);
+api.use(express.json());
+//api.use('/', router);
+async function tst() {
+    console.log('test');
+}
+
+api.use('/', tst);
 
 export default api;
