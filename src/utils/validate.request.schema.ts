@@ -8,6 +8,7 @@ export function validateRequestSchema(
 ) {
     const result = validationResult(req);
     console.log('ana ha validate');
+    console.log(req.body);
     if (!result.isEmpty()) {
         let message = result.array()[0].msg;
         console.log(result);

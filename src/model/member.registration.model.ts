@@ -5,14 +5,13 @@ import { OrganizationUser } from '../types/member.registration';
 export async function dbAddUser(user: OrganizationUser) {
     const insertQuery = `
   INSERT INTO users (
-    name,
-    phone_number,
-    email,
-    area_of_residence,
-    confirmation_card_path
+    Name,
+    Phone_Number,
+    Email,
+    Area_Of_Residence
   )
   VALUES (
-    $1, $2, $3, $4, $5
+    $1, $2, $3, $4
   )
 `;
 
@@ -21,7 +20,6 @@ export async function dbAddUser(user: OrganizationUser) {
         user.phoneNumber,
         user.email,
         user.areaOfResidency,
-        user.confirmationCardPath,
     ];
 
     try {
