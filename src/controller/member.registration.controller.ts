@@ -48,7 +48,25 @@ export async function registerUserApplication(req: Request, res: Response) {
     const user = req.body as OrganizationUser;
     try {
         const addUser = await dbAddUser(user);
-        await sendEmail(user.email,'STP`24 Orientation','Thanks For Applying!! Here is the whatsapp group https://chat.whatsapp.com/IQew0pdD3LK51NKWsMdgKX')
+        await sendEmail(user.email,'Level Up 2.0 Orientation Day | Ain Shams Event',`Dear Future Engineer,
+
+Hope this email finds you in good health and spirit.
+
+Firstly, warm congratulations to you for being accepted into the Engineering faculty at Ain Shams University. Secondly, Thank you for being interested in attending the Orientation Day with STP this year. We hope you have an amazing time.
+
+We would like to remind you that the event is Completely Free. You do not have to pay anything to attend.
+
+Please make sure that you have joined the WhatsApp group that was in the form you filled out before, in order to keep updated with any news and if you have any questions for easier communication. If you have not joined yet, You can message us on Facebook to send you the group link.
+
+We are excited to see you there!!
+
+https://chat.whatsapp.com/IQew0pdD3LK51NKWsMdgKX
+
+Best Wishes,
+--
+STP Team
+
+https://www.stp-org.com/`)
         res.status(200).json({ status: 'success', data: addUser });
     } catch (error) {
         res.status(409).json({
