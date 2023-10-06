@@ -30,11 +30,11 @@ const workshopParticipantsValidators: ValidatorObject = {
         message: 'must not be a past year',
     },
     faculty: {
-        regex: new RegExp(`/.+/`),
+        regex: new RegExp(`.+`),
         message: 'faculty must not be empty',
     },
     university: {
-        regex: new RegExp(`/.+/`),
+        regex: new RegExp(`.+`),
         message: 'university must not be empty',
     },
     workshop: {
@@ -45,32 +45,32 @@ const workshopParticipantsValidators: ValidatorObject = {
     },
 
     q1: {
-        regex: new RegExp(`/.+/`),
+        regex: new RegExp(`.+`),
         message: 'q1 must not be empty',
     },
     q2: {
-        regex: new RegExp(`/.+/`),
+        regex: new RegExp(`.+`),
         message: 'q2 must not be empty',
     },
     q3: {
-        regex: new RegExp(`/.+/`),
+        regex: new RegExp(`.+`),
         message: 'q3 must not be empty',
     },
     q4: {
-        regex: new RegExp(`/.+/`),
+        regex: new RegExp(`.+`),
         message: 'q4 must not be empty',
     },
     q5: {
-        regex: new RegExp(`/.+/`),
+        regex: new RegExp(`.+`),
         message: 'q5 must not be empty',
     },
     q6: {
-        regex: new RegExp(`/.+/`),
+        regex: new RegExp(`.+`),
         message: 'q6 must not be empty',
         optional: true,
     },
     q7: {
-        regex: new RegExp(`/.+/`),
+        regex: new RegExp(`.+`),
         message: 'q7 must not be empty',
         optional: true,
     },
