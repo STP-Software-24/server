@@ -1,3 +1,5 @@
+import { WorkshopEnum } from '../utils/enums/workshop.enums';
+
 export type WorkshopParticipant = {
     fullname: string;
     national_id: string;
@@ -6,6 +8,7 @@ export type WorkshopParticipant = {
     university: string;
     faculty: string;
     graduation_year: string;
+    workshop: WorkshopEnum;
     q1: string;
     q2: string;
     q3: string;
@@ -13,4 +16,4 @@ export type WorkshopParticipant = {
     q5: string;
     q6?: string;
     q7?: string;
-}
+};
