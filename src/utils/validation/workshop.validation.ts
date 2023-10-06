@@ -29,6 +29,14 @@ const workshopParticipantsValidators: ValidatorObject = {
         regex: new RegExp(`^20[2-9][0-9]$`),
         message: 'must not be a past year',
     },
+    faculty: {
+        regex: new RegExp(`/.+/`),
+        message: 'must not be empty',
+    },
+    university: {
+        regex: new RegExp(`/.+/`),
+        message: 'must not be empty',
+    },
     workshop: {
         regex: new RegExp(`^(${Object.values(WorkshopEnum).join('|')})$`),
         message: `must be of the following workshops ${Object.values(
