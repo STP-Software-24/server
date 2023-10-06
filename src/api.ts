@@ -1,6 +1,7 @@
 import express from 'express';
 import router from './router/router';
 import cors from 'cors';
+const expressSanitizer = require('express-sanitizer');
 import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 import { checkEmailExists } from './controller/member.registration.controller';
@@ -24,7 +25,8 @@ api.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 //Applying Cors
 api.use(cors());
 api.use(express.json());
-api.use('/', router);
+api.use(expressSanitizer());
 
+api.use('/', router);
 
 export default api;
