@@ -22,7 +22,7 @@ const workshopParticipantsValidators: ValidatorObject = {
     phone_number: {
         regex: new RegExp('^0[0-9]{10}$'),
         message:
-            'must be an Egyptian phone number of 11 digits and the first digit is 0',
+            'phone number must be an Egyptian phone number of 11 digits and the first digit is 0',
     },
 
     graduation_year: {
@@ -31,47 +31,47 @@ const workshopParticipantsValidators: ValidatorObject = {
     },
     faculty: {
         regex: new RegExp(`/.+/`),
-        message: 'must not be empty',
+        message: 'faculty must not be empty',
     },
     university: {
         regex: new RegExp(`/.+/`),
-        message: 'must not be empty',
+        message: 'university must not be empty',
     },
     workshop: {
         regex: new RegExp(`^(${Object.values(WorkshopEnum).join('|')})$`),
-        message: `must be of the following workshops ${Object.values(
+        message: `workshop must be of the following workshops ${Object.values(
             WorkshopEnum,
         )}`,
     },
 
     q1: {
         regex: new RegExp(`/.+/`),
-        message: 'must not be empty',
+        message: 'q1 must not be empty',
     },
     q2: {
         regex: new RegExp(`/.+/`),
-        message: 'must not be empty',
+        message: 'q2 must not be empty',
     },
     q3: {
         regex: new RegExp(`/.+/`),
-        message: 'must not be empty',
+        message: 'q3 must not be empty',
     },
     q4: {
         regex: new RegExp(`/.+/`),
-        message: 'must not be empty',
+        message: 'q4 must not be empty',
     },
     q5: {
         regex: new RegExp(`/.+/`),
-        message: 'must not be empty',
+        message: 'q5 must not be empty',
     },
     q6: {
         regex: new RegExp(`/.+/`),
-        message: 'must not be empty',
+        message: 'q6 must not be empty',
         optional: true,
     },
     q7: {
         regex: new RegExp(`/.+/`),
-        message: 'must not be empty',
+        message: 'q7 must not be empty',
         optional: true,
     },
 };
