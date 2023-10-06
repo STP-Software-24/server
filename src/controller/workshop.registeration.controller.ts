@@ -9,9 +9,8 @@ import { WorkshopParticipant } from '../types/workshop-participants';
 
 export async function addWorkshopParticipant(req: Request, res: Response) {
     try {
-        const participant: WorkshopParticipant = (req as any).sanitize(
-            req.body,
-        );
+        const participant: WorkshopParticipant = req.body;
+
         console.log({ participant });
 
         await dbAddWorkshopParticipant(participant);

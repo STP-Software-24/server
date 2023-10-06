@@ -7,7 +7,7 @@ export async function dbAddWorkshopParticipant(
     participant: WorkshopParticipant,
 ) {
     try {
-        const insertQuery = `insert INTO workshop_participants (
+        const insertQuery = `INSERT INTO workshop_participants (
             fullname, 
             national_id, 
             email,  
@@ -40,6 +40,7 @@ export async function dbAddWorkshopParticipant(
             $12,
             $13,
             $14,
+            $15
             )`;
 
         const values = [
