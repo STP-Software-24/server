@@ -33,13 +33,7 @@ export async function dbAddUser(user: OrganizationUser) {
 
 export async function dbGetAllUsers() {
     const selectQuery = `
-    SELECT
-    id,
-    name,
-    phone_number,
-    email,
-    area_of_residence,
-    confirmation_card_path
+    SELECT *
   FROM users
   ORDER BY id; 
   `;
