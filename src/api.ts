@@ -5,6 +5,8 @@ import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 import { checkEmailExists } from './controller/member.registration.controller';
 import { limiter } from './services/rate-limiter';
+import morgan from 'morgan';
+import { accessLogStream } from './services/logger';
 const api = express();
 
 /*
@@ -27,6 +29,9 @@ api.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 api.use(cors());
 api.use(express.json());
 api.use(limiter);
+api.use(morgan('combined', { stream: accessLogStream }));
+api.use(morgan('dev'));
+
 api.use('/', router);
 
 export default api;
