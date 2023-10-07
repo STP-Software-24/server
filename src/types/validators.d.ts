@@ -1,7 +1,7 @@
 export interface Validator {
     regex: RegExp;
     message: string;
-    optional?:boolean
+    optional?: boolean;
 }
 
 export interface ValidatorObject {

@@ -4,6 +4,7 @@ import memberRegistrationRouter from './member.registration.router';
 import { dbClient } from '../services/database';
 import emailRouter from './email.router';
 import workshopRegisterationRouter from './workshop.registeration.router';
+import macathonRegisterationRouter from './macathon.registeration.router';
 
 const router = Router();
 
@@ -19,6 +20,8 @@ router.get('/health-check', async (req, res) => {
 // router.use('/member-recruitment', memberRecruitmentRouter);
 // router.use('/member-registration', memberRegistrationRouter);
 router.use('/workshop-registeration', workshopRegisterationRouter);
+router.use('/macathon-registeration', macathonRegisterationRouter);
+
 // router.use('/email', emailRouter);
 
 export default router;

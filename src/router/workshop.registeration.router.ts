@@ -10,6 +10,6 @@ workshopRegisterationRouter
         mwValidateWorkshopParticipant,
         addWorkshopParticipant,
     )
-    .get('all-participants', getAllWorkshopParticipants);
+    .get('/all-participants', getAllWorkshopParticipants);
 
 export default workshopRegisterationRouter;

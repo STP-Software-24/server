@@ -12,3 +12,10 @@ export async function sendWorkshopRegisterationEmail(to: string) {
         'Thanks for Registering for the workshops with us, you will hear from us soon';
     await sendEmail(to, subject, text);
 }
+
+export async function sendMacathonRegisterationEmail(to: string) {
+    const subject = 'STP 24 Macathon Registeration';
+    const text =
+        'Thanks for Registering for the MAcathon with us, you will hear from us soon';
+    await sendEmail(to, subject, text);
+}

@@ -30,7 +30,7 @@ export async function addWorkshopParticipant(req: Request, res: Response) {
 export async function getAllWorkshopParticipants(req: Request, res: Response) {
     try {
         const participants = await dbGetAllWorkshopParticipants();
-        sendSuccess(res, 200, participants);
+        sendSuccess(res, 200, participants.rows);
     } catch (error) {
         sendFailure(res, 500, (error as Error).message);
     }

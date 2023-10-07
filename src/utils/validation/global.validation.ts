@@ -6,6 +6,7 @@ export function fieldsValidator(
 ) {
     for (const field in actualFields) {
         const validatorField = fieldsValidator[field];
+        
         if (!validatorField) {
             throw new Error(
                 `This field ${field} doesn't have a validation field`,
