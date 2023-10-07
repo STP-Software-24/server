@@ -17,7 +17,13 @@ export async function addWorkshopParticipant(req: Request, res: Response) {
         await sendWorkshopRegisterationEmail(participant.email);
         sendSuccess(res, 201, 'Participant Added Successfuly');
     } catch (error) {
-        sendFailure(res, 500, (error as Error).message);
+        let errorMsg = (error as Error).message;
+        let statusCode = 500;
+        if (errorMsg.includes('unique')) {
+            errorMsg = `Can't register twice with the same Phone or Email`;
+            statusCode = 400;
+        }
+        sendFailure(res, statusCode, errorMsg);
     }
 }
 
