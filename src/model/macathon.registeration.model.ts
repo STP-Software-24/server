@@ -20,6 +20,7 @@ export async function dbAddMacathonParticipant(
             graduation_year, 
             team_name,
             role,
+            cv_url,
             q1,
             q2
         ) 
@@ -35,7 +36,9 @@ export async function dbAddMacathonParticipant(
             $8,
             $9,
             $10,
-            $11
+            $11,
+            $12
+
             )`;
 
         const values = [
@@ -48,6 +51,7 @@ export async function dbAddMacathonParticipant(
             participant.graduation_year,
             participant.team_name,
             role,
+            participant.cv_url,
             participant.q1,
             participant.q2,
         ];
@@ -70,6 +74,7 @@ export async function dbGetMacathonTeamByName(teamName: string) {
         graduation_year, 
         team_name,
         role,
+        cv_url AS CV,
         q1,
         q2
         FROM macathon_participants
@@ -95,6 +100,7 @@ export async function dbGetAllMacathonParticipants() {
             graduation_year, 
             team_name,
             role,
+            cv_url AS CV,
             q1,
             q2
             FROM macathon_participants
