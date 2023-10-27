@@ -9,6 +9,7 @@ export type WorkshopParticipant = {
     faculty: string;
     graduation_year: string;
     workshop: WorkshopEnum;
+    workshopSecondPref: WorkshopEnum;
     q1: string;
     q2: string;
     q3: string;
@@ -16,4 +17,5 @@ export type WorkshopParticipant = {
     q5: string;
     q6?: string;
     q7?: string;
+    q8?: string;
 };

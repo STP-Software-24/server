@@ -42,6 +42,12 @@ const workshopParticipantsValidators: ValidatorObject = {
             WorkshopEnum,
         )}`,
     },
+    workshopSecondPref: {
+        regex: new RegExp(`^(${Object.values(WorkshopEnum).join('|')})$`),
+        message: `workshop must be of the following workshops ${Object.values(
+            WorkshopEnum,
+        )}`,
+    },
 
     q1: {
         regex: new RegExp(`.+`),
@@ -73,6 +79,11 @@ const workshopParticipantsValidators: ValidatorObject = {
         message: 'q7 must not be empty',
         optional: true,
     },
+    q8: {
+        regex: new RegExp(`.+`),
+        message: 'q7 must not be empty',
+        optional: true,
+    }
 };
 
 export function validateWorkshopParticipants(participant: WorkshopParticipant) {
