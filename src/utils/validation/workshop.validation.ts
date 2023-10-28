@@ -26,7 +26,7 @@ const workshopParticipantsValidators: ValidatorObject = {
 
     graduation_year: {
         regex: new RegExp(`^202[4-9]$`),
-        message: 'must be a year from 2024 to 2029',
+        message: 'Graduation year must be a year from 2024 to 2029',
     },
     faculty: {
         regex: new RegExp(`.+`),

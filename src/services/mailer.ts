@@ -16,7 +16,7 @@ const remoteTransporterConfig = {
     secure: true,
     auth: {
         user: 'stp24.official@gmail.com',
-        pass: 'suludqykgbhoqlon'
+        pass: process.env.MAIL_PASSWORD,
     }
 };
 
