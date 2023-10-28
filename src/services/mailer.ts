@@ -1,13 +1,12 @@
 import nodemailer from 'nodemailer';
-
-
+import dotenv from 'dotenv';
+dotenv.config();
 
 const localTransporterConfig = {
     host: 'localhost',
     port: 1025,
 };
 
-// suludqykgbhoqlon
 
 
 const remoteTransporterConfig = {
