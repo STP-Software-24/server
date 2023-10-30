@@ -42,7 +42,9 @@ const macathonParticipantsValidators: ValidatorObject = {
     cv_url: {
         regex: new RegExp(`.+`),
         message: 'CV url must not be empty',
+        optional: true
     },
+    
     q1: {
         regex: new RegExp(`.+`),
         message: 'q1 must not be empty',
@@ -56,3 +58,5 @@ const macathonParticipantsValidators: ValidatorObject = {
 export function validateMacathonParticipant(participant: MacathonParticipant) {
     return fieldsValidator(macathonParticipantsValidators, participant);
 }
+
+

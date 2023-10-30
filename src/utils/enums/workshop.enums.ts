@@ -3,5 +3,5 @@ export enum WorkshopEnum {
     FRONTEND = 'Front-end',
     GD = 'Graphic Design',
     MONTAGE = 'Montage',
-    MACHINE_LEARNING='Machine-learning'
+    MACHINE_LEARNING='Machine Learning'
 }
