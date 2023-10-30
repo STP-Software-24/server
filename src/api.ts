@@ -28,8 +28,8 @@ api.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 //Applying Cors
 api.use(cors());
 api.use(express.json());
-api.use(limiter);
-api.use(morgan('combined', { stream: accessLogStream }));
+// api.use(limiter);
+// api.use(morgan('combined', { stream: accessLogStream }));
 api.use(morgan('dev'));
 
 api.use('/', router);
