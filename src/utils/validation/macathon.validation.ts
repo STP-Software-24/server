@@ -40,7 +40,7 @@ const macathonParticipantsValidators: ValidatorObject = {
         message: 'university must not be empty',
     },
     cv_url: {
-        regex: new RegExp(`.+`),
+        regex: new RegExp(`.*`),
         message: 'CV url must not be empty',
         optional: true
     },
