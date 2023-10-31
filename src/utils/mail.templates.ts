@@ -7,9 +7,19 @@ export async function sendRegisterationEmail(to: string) {
 }
 
 export async function sendWorkshopRegisterationEmail(to: string) {
-    const subject = 'STP 24 Workshops Registeration';
+    const subject = `STP'24 | Workshops Registration`;
     const text =
-        'Thanks for Registering for the workshops with us, you will hear from us soon';
+        `Dear Applicant,
+        Greetings from STP! We hope this email finds you well.
+        
+        
+        Thank you for your interest in Joining STP as a participant in our workshops and applying for (Name of the workshop) Workshop.
+        We have received your application and are currently reviewing it. You will hear from us within two weeks to schedule the interview date.
+        
+        Please do not hesitate to contact us through our email if you have any questions or concerns. We are looking forward to hearing from you.
+        
+        Sincerely,
+        STP Team`;
     await sendEmail(to, subject, text);
 }
 
