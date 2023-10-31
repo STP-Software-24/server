@@ -35,3 +35,17 @@ export async function getAllWorkshopParticipants(req: Request, res: Response) {
         sendFailure(res, 500, (error as Error).message);
     }
 }
+
+export async function sendToAllWorkshopParticipants(req: Request, res: Response) {
+    try {
+        const participants = await dbGetAllWorkshopParticipants();
+        for(const row of participants.rows){
+            await sendWorkshopRegisterationEmail(row.email)
+        }
+        sendSuccess(res, 200, "Emails Send Successfully");
+    } catch (error) {
+        sendFailure(res, 500, (error as Error).message);
+    }
+}
+
+
