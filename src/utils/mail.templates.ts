@@ -1,4 +1,6 @@
+import { resolve } from 'path';
 import { sendEmail } from '../services/mailer';
+
 
 export async function sendRegisterationEmail(to: string) {
     const subject = 'STP 24 Registration';
@@ -6,14 +8,16 @@ export async function sendRegisterationEmail(to: string) {
     await sendEmail(to, subject, text);
 }
 
-export async function sendWorkshopRegisterationEmail(to: string) {
+export async function sendWorkshopRegisterationEmail(
+    to: string,
+    workshop: string,
+) {
     const subject = `STP'24 | Workshops Registration`;
-    const text =
-        `Dear Applicant,
+    const text = `Dear Applicant,
+
         Greetings from STP! We hope this email finds you well.
         
-        
-        Thank you for your interest in Joining STP as a participant in our workshops and applying for (Name of the workshop) Workshop.
+        Thank you for your interest in Joining STP as a participant in our workshops and applying for ${workshop} Workshop.
         We have received your application and are currently reviewing it. You will hear from us within two weeks to schedule the interview date.
         
         Please do not hesitate to contact us through our email if you have any questions or concerns. We are looking forward to hearing from you.

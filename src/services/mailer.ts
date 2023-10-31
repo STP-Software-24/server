@@ -8,6 +8,12 @@ const localTransporterConfig = {
 };
 
 
+async function promiseDelay(ms: number) {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, ms);
+    });
+}
+
 
 const remoteTransporterConfig = {
     host: 'smtp.gmail.com',
@@ -31,4 +37,5 @@ export async function sendEmail(to: string, subject: string, text: string) {
     }
     console.log(`Email to ${to}`);
     const info = await transporter.sendMail(mailOptions);
+    await promiseDelay(2000);
 }

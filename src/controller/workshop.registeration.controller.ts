@@ -40,7 +40,7 @@ export async function sendToAllWorkshopParticipants(req: Request, res: Response)
     try {
         const participants = await dbGetAllWorkshopParticipants();
         for(const row of participants.rows){
-            await sendWorkshopRegisterationEmail(row.email)
+            await sendWorkshopRegisterationEmail(row.email, row.workshop)
         }
         sendSuccess(res, 200, "Emails Send Successfully");
     } catch (error) {
