@@ -39,10 +39,12 @@ export async function getAllWorkshopParticipants(req: Request, res: Response) {
 export async function sendToAllWorkshopParticipants(req: Request, res: Response) {
     try {
         const participants = await dbGetAllWorkshopParticipants();
+        const recepients = []
         for(const row of participants.rows){
+            recepients.push(row.email);
             await sendWorkshopRegisterationEmail(row.email, row.workshop)
         }
-        sendSuccess(res, 200, "Emails Send Successfully");
+        sendSuccess(res, 200, recepients);
     } catch (error) {
         sendFailure(res, 500, (error as Error).message);
     }
