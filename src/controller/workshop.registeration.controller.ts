@@ -14,7 +14,7 @@ export async function addWorkshopParticipant(req: Request, res: Response) {
         console.log({ participant });
 
         await dbAddWorkshopParticipant(participant);
-        await sendWorkshopRegisterationEmail(participant.email);
+        await sendWorkshopRegisterationEmail(participant.email, participant.workshop );
         sendSuccess(res, 201, 'Participant Added Successfuly');
     } catch (error) {
         let errorMsg = (error as Error).message;
