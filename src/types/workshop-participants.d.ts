@@ -10,6 +10,7 @@ export type WorkshopParticipant = {
     graduation_year: string;
     workshop: WorkshopEnum;
     workshopSecondPref: WorkshopEnum;
+    uniqueCode: string;
     q1: string;
     q2: string;
     q3: string;

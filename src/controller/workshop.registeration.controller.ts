@@ -6,15 +6,21 @@ import {
 } from '../model/workshop.registeration.mode';
 import { sendWorkshopRegisterationEmail } from '../utils/mail.templates';
 import { WorkshopParticipant } from '../types/workshop-participants';
+import { nanoid } from 'nanoid';
+import { dbClient } from '../services/database';
+import { generateEightCharCode } from '../utils/unique-codes';
 
 export async function addWorkshopParticipant(req: Request, res: Response) {
     try {
-        const participant: WorkshopParticipant = req.body;
+        const participant: WorkshopParticipant = {...req.body, uniqueCode: generateEightCharCode()};
 
         console.log({ participant });
 
         await dbAddWorkshopParticipant(participant);
-        await sendWorkshopRegisterationEmail(participant.email, participant.workshop );
+        await sendWorkshopRegisterationEmail(
+            participant.email,
+            participant.workshop,
+        );
         sendSuccess(res, 201, 'Participant Added Successfuly');
     } catch (error) {
         let errorMsg = (error as Error).message;
@@ -36,13 +42,16 @@ export async function getAllWorkshopParticipants(req: Request, res: Response) {
     }
 }
 
-export async function sendToAllWorkshopParticipants(req: Request, res: Response) {
+export async function sendToAllWorkshopParticipants(
+    req: Request,
+    res: Response,
+) {
     try {
         const participants = await dbGetAllWorkshopParticipants();
-        const recepients = []
-        for(const row of participants.rows){
+        const recepients = [];
+        for (const row of participants.rows) {
             recepients.push(row.email);
-            await sendWorkshopRegisterationEmail(row.email, row.workshop)
+            await sendWorkshopRegisterationEmail(row.email, row.workshop);
         }
         sendSuccess(res, 200, recepients);
     } catch (error) {
@@ -50,4 +59,19 @@ export async function sendToAllWorkshopParticipants(req: Request, res: Response)
     }
 }
 
+export async function assignUniqueCode(req: Request, res: Response) {
+    try {
+        const tuples = await dbGetAllWorkshopParticipants();
+        for (const tuple of tuples.rows) {
+            const uniqueCode = generateEightCharCode();
 
+            await dbClient.query(
+                `UPDATE your_table SET unique_code = '${uniqueCode}' WHERE id = ${tuple.phone_number}`,
+            );
+        }
+
+        sendSuccess(res, 200, 'Assigned');
+    } catch (error) {
+        sendFailure(res, 500, (error as Error).message);
+    }
+}

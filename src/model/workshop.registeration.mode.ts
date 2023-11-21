@@ -16,6 +16,7 @@ export async function dbAddWorkshopParticipant(
             graduation_year, 
             workshop,
             workshop_second_pref,
+            unique_code,
             q1,
             q2,
             q3,
@@ -42,7 +43,8 @@ export async function dbAddWorkshopParticipant(
             $13,
             $14,
             $15,
-            $16
+            $16,
+            $17
             )`;
 
         const values = [
@@ -54,6 +56,7 @@ export async function dbAddWorkshopParticipant(
             participant.graduation_year,
             participant.workshop,
             participant.workshopSecondPref,
+            participant.uniqueCode,
             participant.q1,
             participant.q2,
             participant.q3,

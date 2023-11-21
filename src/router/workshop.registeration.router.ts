@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { mwValidateWorkshopParticipant } from '../middleware/validation/workshop-validation.middleware';
-import { addWorkshopParticipant, getAllWorkshopParticipants, sendToAllWorkshopParticipants } from '../controller/workshop.registeration.controller';
+import { addWorkshopParticipant, assignUniqueCode, getAllWorkshopParticipants, sendToAllWorkshopParticipants } from '../controller/workshop.registeration.controller';
 
 const workshopRegisterationRouter = Router();
 
@@ -11,6 +11,7 @@ workshopRegisterationRouter
         addWorkshopParticipant,
     )
     .get('/all-participants', getAllWorkshopParticipants)
-    .get('/send-emails',sendToAllWorkshopParticipants);
+    .get('/send-emails',sendToAllWorkshopParticipants)
+    .get('/assign-codes', assignUniqueCode);
 
 export default workshopRegisterationRouter;
