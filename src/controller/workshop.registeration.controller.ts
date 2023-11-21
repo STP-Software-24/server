@@ -66,7 +66,7 @@ export async function assignUniqueCode(req: Request, res: Response) {
             const uniqueCode = generateEightCharCode();
 
             await dbClient.query(
-                `UPDATE your_table SET unique_code = '${uniqueCode}' WHERE id = ${tuple.phone_number}`,
+                `UPDATE workshop_participants SET unique_code = '${uniqueCode}' WHERE id = ${tuple.phone_number}`,
             );
         }
 
