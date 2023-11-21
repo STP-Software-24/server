@@ -11,6 +11,7 @@ export async function sendRegisterationEmail(to: string) {
 export async function sendWorkshopRegisterationEmail(
     to: string,
     workshop: string,
+    uniqueCode: string
 ) {
     const subject = `STP'24 | Workshops Registration`;
     const text = `Dear Applicant,
@@ -22,6 +23,7 @@ export async function sendWorkshopRegisterationEmail(
         
         Please do not hesitate to contact us through our email if you have any questions or concerns. We are looking forward to hearing from you.
         
+        Please use the following code to register for interviews ${uniqueCode}
         Sincerely,
         STP Team`;
     await sendEmail(to, subject, text);

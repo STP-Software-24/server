@@ -12,7 +12,10 @@ import { generateEightCharCode } from '../utils/unique-codes';
 
 export async function addWorkshopParticipant(req: Request, res: Response) {
     try {
-        const participant: WorkshopParticipant = {...req.body, uniqueCode: generateEightCharCode()};
+        const participant: WorkshopParticipant = {
+            ...req.body,
+            uniqueCode: generateEightCharCode(),
+        };
 
         console.log({ participant });
 
@@ -20,6 +23,7 @@ export async function addWorkshopParticipant(req: Request, res: Response) {
         await sendWorkshopRegisterationEmail(
             participant.email,
             participant.workshop,
+            participant.uniqueCode,
         );
         sendSuccess(res, 201, 'Participant Added Successfuly');
     } catch (error) {
@@ -51,7 +55,11 @@ export async function sendToAllWorkshopParticipants(
         const recepients = [];
         for (const row of participants.rows) {
             recepients.push(row.email);
-            await sendWorkshopRegisterationEmail(row.email, row.workshop);
+            await sendWorkshopRegisterationEmail(
+                row.email,
+                row.workshop,
+                row.uniqueCode,
+            );
         }
         sendSuccess(res, 200, recepients);
     } catch (error) {
