@@ -3,6 +3,7 @@ import { sendFailure, sendSuccess } from '../utils/custom-response-handler';
 import {
     dbAddWorkshopParticipant,
     dbGetAllWorkshopParticipants,
+    dbGetWorkshopParticipantByUniqueCode,
 } from '../model/workshop.registeration.mode';
 import { sendWorkshopRegisterationEmail } from '../utils/mail.templates';
 import { WorkshopParticipant } from '../types/workshop-participants';
@@ -67,6 +68,23 @@ export async function sendToAllWorkshopParticipants(
     }
 }
 
+export async function validateWorkshopParticipant(
+    req: Request,
+    res: Response,
+){
+    try {
+        const { uniqueCode } = req.body;
+        const participant = await dbGetWorkshopParticipantByUniqueCode(uniqueCode);
+        if(participant.rowCount > 0) {
+            sendSuccess(res, 200, participant.rows[0].fullname);
+        } else {
+            sendFailure(res, 401, 'Invalid Unique Code');
+        }
+    } catch (error) {
+        sendFailure(res, 500, (error as Error).message);
+    }
+}
+
 export async function assignUniqueCode(req: Request, res: Response) {
     try {
         const tuples = await dbGetAllWorkshopParticipants();
@@ -83,3 +101,5 @@ export async function assignUniqueCode(req: Request, res: Response) {
         sendFailure(res, 500, (error as Error).message);
     }
 }
+
+

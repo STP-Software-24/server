@@ -102,3 +102,11 @@ export async function dbGetAllWorkshopParticipants() {
         throw new Error((error as Error).message);
     }
 }
+
+export async function dbGetWorkshopParticipantByUniqueCode(uniqueCode: string) {
+    const participant = await dbClient.query(
+        `SELECT * FROM workshop_participants WHERE unique_code = '${uniqueCode}'`,
+    );
+
+    return participant as QueryResult<WorkshopParticipant>; 
+}
