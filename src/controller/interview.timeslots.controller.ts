@@ -19,7 +19,13 @@ export async function ReserveTimeSlot(req: Request, res: Response) {
         const reservation = await addReservationToTimeSlot(reservationData);
         sendSuccess(res, 201, reservation);
     } catch (error) {
-        sendFailure(res, 500, (error as Error).message);
+        let errorMsg = (error as Error).message;
+        let statusCode = 500;
+        if (errorMsg.includes('unique')) {
+            errorMsg = `This timeslot is already reserved try another one`;
+            statusCode = 400;
+        }
+        sendFailure(res, statusCode, errorMsg);
     }
 }
 
