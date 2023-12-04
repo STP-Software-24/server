@@ -81,3 +81,4 @@ export async function getAllMacathonParticipants(req: Request, res: Response) {
         sendFailure(res, 500, (error as Error).message);
     }
 }
+

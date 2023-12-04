@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import { sendEmail } from '../services/mailer';
-
+import { WorkshopEnum } from './enums/workshop.enums';
 
 export async function sendRegisterationEmail(to: string) {
     const subject = 'STP 24 Registration';
@@ -48,5 +48,26 @@ export async function sendMacathonRegisterationEmail(to: string) {
         
         Sincerely,
         STP Team`;
+    await sendEmail(to, subject, text);
+}
+
+export async function sendWorkshopTestEmail(
+    to: string,
+) {
+    const subject = `STP'24 | Workshops Test`;
+    const text = 
+    `Dear applicant,
+
+    Hope this email finds you well.
+
+    Thank you for you patience and your willingness to complete your registration for the workshop with STP.
+
+    Please fill the following form in order to continue to the next phase:
+    https://docs.google.com/forms/d/e/1FAIpQLSf9ypCS2SoFBry8nUtzPhxDE9FN-jkU6ucUd0SbrZZKfx5X2Q/viewform
+    Important note: The purpose of this test(form) is to measure if you are gonna have an advantage from the workshop or not. Please make the answers to the questions to be based on your knowledge only
+
+    Best regards,
+    STP team
+    `;
     await sendEmail(to, subject, text);
 }
