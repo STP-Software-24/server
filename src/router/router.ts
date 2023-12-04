@@ -20,6 +20,7 @@ router.get('/health-check', async (req, res) => {
 // router.use('/member-recruitment', memberRecruitmentRouter);
 // router.use('/member-registration', memberRegistrationRouter);
 router.use('/workshop-registeration', workshopRegisterationRouter);
+router.use('/interview-timeslots', workshopRegisterationRouter);
 router.use('/macathon-registeration', macathonRegisterationRouter);
 
 // router.use('/email', emailRouter);
