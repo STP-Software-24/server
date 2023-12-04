@@ -5,7 +5,7 @@ import {
     dbGetAllWorkshopParticipants,
     dbGetWorkshopParticipantByUniqueCode,
 } from '../model/workshop.registeration.mode';
-import { sendWorkshopRegisterationEmail, sendWorkshopTestEmail } from '../utils/mail.templates';
+import { sendNewWorkshopTestEmail, sendWorkshopRegisterationEmail, sendWorkshopTestEmail } from '../utils/mail.templates';
 import { WorkshopParticipant } from '../types/workshop-participants';
 import { nanoid } from 'nanoid';
 import { dbClient } from '../services/database';
@@ -26,7 +26,7 @@ export async function addWorkshopParticipant(req: Request, res: Response) {
             participant.workshop,
             participant.uniqueCode,
         );
-        await sendWorkshopTestEmail(
+        await sendNewWorkshopTestEmail(
             participant.email
         );
         sendSuccess(res, 201, 'Participant Added Successfuly');
@@ -114,6 +114,7 @@ export async function sendTestToParticipants(req: Request, res: Response) {
             await sendWorkshopTestEmail(
                 row.email
             );
+            
         }
         sendSuccess(res, 200, recepients);
     } catch (error) {
