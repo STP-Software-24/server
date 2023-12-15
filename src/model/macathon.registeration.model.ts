@@ -19,6 +19,7 @@ export async function dbAddMacathonParticipant(
             faculty, 
             graduation_year, 
             team_name,
+            competition_name,
             role,
             cv_url,
             q1,
@@ -37,7 +38,8 @@ export async function dbAddMacathonParticipant(
             $9,
             $10,
             $11,
-            $12
+            $12,
+            $13
 
             )`;
 
@@ -50,13 +52,17 @@ export async function dbAddMacathonParticipant(
             participant.faculty,
             participant.graduation_year,
             participant.team_name,
+            participant.competition_name,
             role,
             participant.cv_url,
             participant.q1,
             participant.q2,
         ];
+        console.log("Iam here at the adding")
 
-        return await dbClient.query(insertQuery, values);
+        const res = await dbClient.query(insertQuery, values);
+        console.log(res)
+        return res;
     } catch (error) {
         throw new Error((error as Error).message);
     }
@@ -73,6 +79,7 @@ export async function dbGetMacathonTeamByName(teamName: string) {
         faculty, 
         graduation_year, 
         team_name,
+        competition_name,
         role,
         cv_url AS CV,
         q1,
@@ -99,6 +106,7 @@ export async function dbGetAllMacathonParticipants() {
             faculty, 
             graduation_year, 
             team_name,
+            competition_name,
             role,
             cv_url AS CV,
             q1,

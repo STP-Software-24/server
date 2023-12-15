@@ -1,5 +1,6 @@
 import { MacathonParticipant } from '../../types/macathon.registeration';
 import { ValidatorObject } from '../../types/validators';
+import { MacathonCompetitionNameEnum } from '../enums/macathon.enum';
 import { fieldsValidator } from './global.validation';
 
 const macathonParticipantsValidators: ValidatorObject = {
@@ -10,6 +11,14 @@ const macathonParticipantsValidators: ValidatorObject = {
     team_name: {
         regex: new RegExp('^[a-zA-Z ]+$'),
         message: 'Team Name must be a string of characters only',
+    },
+    competition_name: {
+        regex: new RegExp(
+            `^(${Object.values(MacathonCompetitionNameEnum).join('|')})$`,
+        ),
+        message: `competition name must be of the following ${Object.values(
+            MacathonCompetitionNameEnum,
+        )}`,
     },
     national_id: {
         regex: new RegExp('^[0-9]{14}$'),
@@ -42,9 +51,9 @@ const macathonParticipantsValidators: ValidatorObject = {
     cv_url: {
         regex: new RegExp(`.*`),
         message: 'CV url must not be empty',
-        optional: true
+        optional: true,
     },
-    
+
     q1: {
         regex: new RegExp(`.+`),
         message: 'q1 must not be empty',
@@ -58,5 +67,3 @@ const macathonParticipantsValidators: ValidatorObject = {
 export function validateMacathonParticipant(participant: MacathonParticipant) {
     return fieldsValidator(macathonParticipantsValidators, participant);
 }
-
-
