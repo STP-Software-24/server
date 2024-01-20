@@ -48,7 +48,6 @@ export async function sendMacathonRegisterationEmail(to: string) {
         Greetings from STP! We hope this email finds you well.
         
         Thank you for your interest in Joining STP as a competitor in our competition MACATHON 5.0.
-        We have received your application and are currently reviewing it. You will hear from us within two weeks to schedule the interview date.
         
         Please do not hesitate to contact us through our email if you have any questions or concerns. We are looking forward to hearing from you.
         
